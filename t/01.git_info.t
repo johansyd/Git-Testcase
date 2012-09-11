@@ -13,7 +13,9 @@ This test tests the Git::Info
 
 =cut
 
-my $git_info = new Git::Info();
+my $git_info = new Git::Info(
+    'git_dir' => './../.git'
+);
 
 my $git_branch = $git_info->current_branch();
 ok($git_branch, "The branch $git_branch was returned.");
