@@ -11,7 +11,7 @@ Johan Sydseter C<<johan.sydseter@startsiden.no>>
 
 =head1 NAME
 
-Git::Info;
+Git::Info
 
 =head1 DESCRIPTION
 
@@ -52,8 +52,10 @@ Fetch the current git HEAD ref given the existence of a .git directory
 
 =cut
 sub fetch_current {
-    my ($self, $git_dir) = @_;
-    my $logger = get_logger('Git::Branch');
+    my ($self) = @_;
+    my $logger = get_logger('Git::Info');
+
+    my $git_dir = $self->git_dir();
 
     if (!-d $git_dir) {
         $logger->logdie("$git_dir does not exist.");
@@ -102,7 +104,7 @@ sub BUILD {
     my $git_branch_arg = $args->{'git_branch'};
 
     if (defined $git_dir_arg) {
-        $git_dir = $git_dir_arg;
+        $git_dir = "$Bin/$git_dir_arg";
         $self->git_dir($git_dir);
     }
 

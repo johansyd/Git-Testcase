@@ -21,7 +21,7 @@ ok($git_branch, "The branch $git_branch was returned.");
 ok($git_branch ne 'default', 
     "The git branch $git_branch was not the default value.");
 
-ok($git_branch eq $git_info->fetch_current('.git'), 
+ok($git_branch eq $git_info->fetch_current('./../.git'), 
     "fetch_current Git::Info->current_branch() delivers $git_branch");
 
 done_testing();
