@@ -9,7 +9,7 @@ Johan Sydseter C<<johan.sydseter@startsiden.no>>
 
 =head1 DESCRIPTION
 
-This test tests the ConfigLoader
+This test tests the Git::Testcase::Bootstrap
 
 =cut
 
