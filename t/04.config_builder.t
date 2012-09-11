@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More tests => 1;
-use Git::Testcase::ConfigBuilder;
+use Git::Testcase::Bootstrap;
 
 =head1 AUTHOR
 
@@ -17,11 +17,11 @@ my $config_loader = new Git::Testcase::Helper::ConfigLoader(
     'config_dir' => './dataprovider'
 );
 
-my $config_builder = new Git::Testcase::ConfigBuilder(
+my $bootstrap = new Git::Testcase::Bootstrap(
     'config_loader' => $config_loader
 );
-$config_builder->build_branch_config('default');
-my $config = $config_builder->config();
+$bootstrap->build_branch_config('default');
+my $config = $bootstrap->config();
 
 my $base_url = $config->base_url();
 

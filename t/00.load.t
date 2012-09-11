@@ -16,7 +16,7 @@ BEGIN {
     use_ok( 'Git::Info');
     use_ok( 'Git::Testcase' );
     use_ok( 'Git::Testcase::Config' );
-    use_ok( 'Git::Testcase::ConfigBuilder' );
+    use_ok( 'Git::Testcase::Bootstrap' );
     use_ok( 'Git::Testcase::Helper::ConfigLoader' );
     use_ok( 'Git::Testcase::Helper::LogLoader');
 }

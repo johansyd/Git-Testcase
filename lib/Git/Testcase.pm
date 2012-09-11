@@ -6,7 +6,7 @@ use warnings;
 use Moose;
 use Log::Log4perl qw(get_logger);
 use Git::Info;
-use Git::Testcase::ConfigBuilder;
+use Git::Testcase::Bootstrap;
 
 our $VERSION = '0.01';
 
@@ -34,14 +34,14 @@ has 'config' => (
     isa => 'Git::Testcase::Config'
 );
 
-=head3 configBuilder
+=head3 Bootstrap
 
 The config builder
 
 =cut
-has 'config_builder' => (
+has 'bootstrap' => (
     is  => 'ro',
-    isa => 'Git::Testcase::ConfigBuilder',
+    isa => 'Git::Testcase::Bootstrap',
     required => 1
 );
 
@@ -63,11 +63,11 @@ sub BUILD {
     
     my $git_info = $self->git_info();
     my $git_branch = $git_info->current_branch();
-    my $config_builder = $args->{'config_builder'};
+    my $bootstrap = $args->{'bootstrap'};
 
-    $config_builder->build_branch_config($git_branch);
+    $bootstrap->build_branch_config($git_branch);
 
-    my $config = $config_builder->config();
+    my $config = $bootstrap->config();
 
     $self->config($config);
 }

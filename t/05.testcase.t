@@ -3,7 +3,7 @@ use warnings;
 use Test::More tests => 1;
 use Git::Testcase;
 use Git::Testcase::Helper::ConfigLoader;
-use Git::Testcase::ConfigBuilder;
+use Git::Testcase::Bootstrap;
 =head1 AUTHOR
 
 Johan Sydseter C<<johan.sydseter@startsiden.no>>
@@ -18,12 +18,12 @@ my $config_loader = new Git::Testcase::Helper::ConfigLoader(
     'config_dir' => './dataprovider'
 );
 
-my $config_builder = new Git::Testcase::ConfigBuilder(
+my $bootstrap = new Git::Testcase::Bootstrap(
     'config_loader' => $config_loader
 );
 
 my $testcase = new Git::Testcase(
-    'config_builder' => $config_builder
+    'bootstrap' => $bootstrap
 );
 
 my $config = $testcase->config();
