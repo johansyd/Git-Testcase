@@ -14,7 +14,7 @@ This test tests the ConfigLoader
 =cut
 
 my $config_loader = new Git::Testcase::Helper::ConfigLoader(
-    'config_dir' => 't/dataprovider'
+    'config_dir' => './dataprovider'
 );
 
 my $config_builder = new Git::Testcase::ConfigBuilder(

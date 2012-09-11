@@ -1,9 +1,8 @@
 package Git::Info;
 use strict;
 use warnings;
-
+use FindBin qw($Bin);
 use Moose;
-use Cwd qw(getcwd);
 use Log::Log4perl qw(get_logger);
 
 =head1 AUTHOR
@@ -26,7 +25,7 @@ The branch that is tested against
 
 =cut
 
-has  'current_branch' => (
+has 'current_branch' => (
     is  => 'rw',
     isa => 'Str',
     default => sub { 'default' }
@@ -43,7 +42,7 @@ has 'git_dir' => (
     is      => 'rw',
     isa     => 'Str',
     default => sub {
-        my $git_dir = getcwd() . '/.git';
+        my $git_dir = $Bin . '/../.git';
         return $git_dir;
 });
 

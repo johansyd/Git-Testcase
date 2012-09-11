@@ -4,8 +4,7 @@ use strict;
 use warnings;
 
 use Moose;
-use Cwd qw(getcwd);
-
+use FindBin qw($Bin);
 use Config::Any qw(load_files);
 use Log::Log4perl qw(get_logger);
 
@@ -43,7 +42,7 @@ Checks for a configuration folder in the parrent of the current dir.
 has 'config_dir' => (
     is      => 'rw',
     isa     => 'Str',
-    default => sub { getcwd() . '/etc' }
+    default => sub { $Bin . '/../etc' }
 );
 
 =head3 config_basepath
@@ -119,7 +118,7 @@ sub BUILD {
     my $config_dir_arg = $args->{'config_dir'};
 
     if (defined $config_dir_arg) {
-        $config_dir = $config_dir_arg;
+        $config_dir = "$Bin/$config_dir_arg";
     }
 
     if (!-d $config_dir) {
