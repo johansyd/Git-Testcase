@@ -42,8 +42,10 @@ Looks for a .git folder in the parent of the current dir
 has 'git_dir' => (
     is      => 'rw',
     isa     => 'Str',
-    default => sub { getcwd() . '/../.git' }
-);
+    default => sub {
+        my $git_dir = getcwd() . '/.git';
+        return $git_dir;
+});
 
 =head3
 
@@ -75,9 +77,11 @@ sub fetch_current {
         "Could not open $git_head_file");
 
     my @lines = <FILE>;
-    my $git_current_head_ref = chomp(substr(16,@lines[0]));
+    my $git_ref_str = $lines[0];
+    my $git_ref = substr($git_ref_str,16);
+    chomp($git_ref);
 
-    return $git_current_head_ref;
+    return $git_ref;
 }
 
 =head3 BUILD
@@ -112,8 +116,13 @@ sub BUILD {
     }
 
     if ($current_branch) {
-        $self->git_branch($current_branch);
+        $self->current_branch($current_branch);
     } else {
-        $logger->error("No git branch could be retrieved using $git_branch.");
+        $logger->error("No git branch could be retrieved using "
+            . "$current_branch.");
     }
 }
+
+1;
+
+__END__

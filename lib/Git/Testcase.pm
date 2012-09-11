@@ -5,6 +5,7 @@ use warnings;
 
 use Moose;
 use Log::Log4perl qw(get_logger);
+use Git::Info;
 use Git::Testcase::ConfigBuilder;
 
 our $VERSION = '0.01';
@@ -53,7 +54,7 @@ has 'git_info' => (
     is      => 'ro',
     isa     => 'Git::Info',
     default => sub {
-        my $git_branch = new Git::Branch();
+        my $git_branch = new Git::Info();
         return $git_branch;
 });
 
@@ -61,7 +62,7 @@ sub BUILD {
     my($self, $args) = @_;
     
     my $git_info = $self->git_info();
-    my $git_branch = $self->current_branch();
+    my $git_branch = $git_info->current_branch();
     my $config_builder = $args->{'config_builder'};
 
     $config_builder->build_branch_config($git_branch);

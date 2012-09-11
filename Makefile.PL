@@ -13,4 +13,6 @@ all_from 'lib/Git/Testcase.pm';
 requires 'Log::Log4perl';
 requires 'Moose';
 
+test_requires 'Test::More';
+
 writeAll;

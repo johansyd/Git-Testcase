@@ -1,4 +1,4 @@
-package Git::Testcase::Helper::LogLoader
+package Git::Testcase::Helper::LogLoader;
 
 use strict;
 use warnings;
@@ -43,7 +43,7 @@ has '_default_log_config' => (
               'Log::Log4perl::Layout::PatternLayout',
           'log4perl.appender.Screen.layout.ConversionPattern' =>
               $log_pattern,
-         };
+       };
        return $log_config;
 });
 
@@ -67,14 +67,14 @@ export GIT_TESTSUITE_LOG_PATTERN to set the log ConversionPattern
 
 =cut
 sub init_rootLogger {
-    my ($self)
+    my ($self) = @_;
 
-    $log_config = $self->log_config();
+    my $log_config = $self->log_config();
 
     if(!$log_config) {
         $log_config = $self->_default_log_config();
     }
-    Log::Log4perl->init(%$log_config);
+    Log::Log4perl->init($log_config);
     return 1;
 }
 

@@ -1,0 +1,6 @@
+default:
+    baseurl: test
+master:
+    baseurl: test
+develop:
+    baseurl: test

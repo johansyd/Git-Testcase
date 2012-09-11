@@ -43,7 +43,7 @@ Checks for a configuration folder in the parrent of the current dir.
 has 'config_dir' => (
     is      => 'rw',
     isa     => 'Str',
-    default => sub { getcwd() . '/../etc' }
+    default => sub { getcwd() . '/etc' }
 );
 
 =head3 config_basepath
@@ -81,7 +81,7 @@ Loading the config
 sub _load_config {
     my ($self) = @_;
     my $logger = get_logger('Git::Testcase::Helper::ConfigLoader');
-    my @files ();
+    my @files = ();
     my $config_dir = $self->config_dir();
     my $config_basepath = $self->config_basepath();
     my $config_suffix = $self->_config_suffix();
