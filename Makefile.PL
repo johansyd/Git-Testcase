@@ -14,5 +14,11 @@ requires 'Log::Log4perl';
 requires 'Moose';
 requires 'FindBin' => '1.47';
 test_requires 'Test::More' => '0.62';
+test_requires 'Pod::Coverage::CountParents';
+test_requires 'Test::Warn';
+test_requires 'Test::Differences';
+test_requires 'Template';
+test_requires 'Parallel::Iterator';
+test_requires 'Devel::Cover';
 
 WriteAll;
