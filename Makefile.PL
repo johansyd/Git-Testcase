@@ -12,7 +12,9 @@ all_from 'lib/Git/Testcase.pm';
 
 requires 'Log::Log4perl';
 requires 'Moose';
+requires 'Config::Any';
 requires 'FindBin' => '1.47';
+
 test_requires 'Test::More' => '0.62';
 test_requires 'Pod::Coverage::CountParents';
 test_requires 'Test::Warn';
